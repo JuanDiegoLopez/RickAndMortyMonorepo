@@ -1,49 +1,40 @@
 import '../scss/style.scss';
-import Config from './config';
+import { Router } from './lib/router';
+import { HomeComponent } from './components/home';
+import { CharactersComponent } from './components/characters';
+import { DetailsComponent } from './components/details';
 
-const init = async () => {
-  try {
-    const response = await fetch(`${Config.API_URL}/character/1,2,3`);
-    const data = await response.json();
-    mainComponent(data);
-  } catch (error) {
-    handleErrors(error);
+const configureRouter = () => { 
+  const router = new Router();
+
+  router.config({
+    mode: 'history'
+  });
+
+  router.add(/home/, HomeComponent);
+  router.add(/characters/, CharactersComponent);
+  router.add(/details\/(.*)/, DetailsComponent);
+  router.listen();
+  router.navigate('/home');
+
+  return router;
+}
+
+const setupLayout = () => {
+  const navbar = document.getElementById('nav-mobile');
+  const items = navbar.getElementsByTagName('a');
+  
+  for (let item of items) {
+    item.addEventListener('click', (event) => {
+      event.preventDefault();
+      router.navigate(item.getAttribute('href'));
+    })
   }
 }
 
-const mainComponent = data => {
-  const mainWrapp = document.querySelector('.content');
-  const html = `
-    <div class="row">${getCharacters(data)}</div>
-    <button class="waves-effect waves-light btn right">Ver todos</button>
-    `;
+setupLayout();
 
-  mainWrapp.classList.add('container');
-  mainWrapp.innerHTML = html;
-}
+export const MainWrapper = document.querySelector('.content');
+MainWrapper.classList.add('container');
 
-const getCharacters = (characters) => {
-  let result = ''
-  characters.forEach(character => {
-    result += `
-      <div class="col s12 m4">
-        <div class="card">
-          <div class="card-image">
-            <img src="${character.image}">
-          </div>
-          <div class="card-content">
-            <span class="card-title">${character.name}</span>
-          </div>
-        </div>
-      </div>
-    `
-  });
-  
-  return result;
-}
-
-const handleErrors = error => {
-  console.log(error);
-}
-
-init();
+export const router = configureRouter();

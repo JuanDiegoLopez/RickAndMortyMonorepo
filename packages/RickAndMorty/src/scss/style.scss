@@ -1,11 +1,27 @@
 @import '~materialize-css/dist/css/materialize.min.css';
 
+#app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
 .content {
   padding-top: 20px;
+  padding-bottom: 50px;
+  flex: 1 0 auto;
 }
 
 .page-footer {
-  position: absolute;
-  bottom: 0;
+  position: relative; 
+  bottom: 0px; 
   width: 100%;
+}
+
+.character {
+  cursor: pointer;
+
+  @media screen and (min-width: 600px) {
+    height: 320px;
+  }
 }
