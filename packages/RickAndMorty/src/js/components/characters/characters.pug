@@ -1,0 +1,38 @@
+.row
+  each character in characters
+    .col.s12.m3.l2
+      .card.hoverable.character(id=character.id) 
+        .card-image
+          img(src=character.image)
+        .card-content
+          span.cart-title #{character.name}
+
+- const page = parseInt(pagination.current);
+ul.pagination.center
+  if (page - 1) === 0
+    li.disabled
+      a(href='#!')
+        i.material-icons chevron_left
+  else
+    li.waves-effect
+      a(href=`/characters/${page - 1}`)
+        i.material-icons chevron_left
+
+  - for(let i = pagination.start; i <= pagination.end; i++) {
+    if i == page
+      li.cyan.darken-2
+        a.white-text(href=`/characters/${i}`) #{i}
+    else
+      li.waves-effect
+        a(href=`/characters/${i}`) #{i}
+  - }
+
+  if page === pagination.total 
+    li.disabled
+      a(href="#!")
+        i.material-icons chevron_right
+  else 
+    li.waves-effect
+      a(href=`/characters/${page + 1}`)
+        i.material-icons chevron_right
+

@@ -6,7 +6,8 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist')
+    contentBase: path.resolve(__dirname, './dist'),
+    historyApiFallback: true
   },
   entry: path.resolve(__dirname, 'src/js/index.js'),
   output: {
@@ -47,6 +48,10 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.pug$/,
+        use: ['pug-loader']
       }
     ]
   }
