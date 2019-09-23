@@ -1,0 +1,9 @@
+app-characters {
+  .character {
+    cursor: pointer;
+  }
+
+  .pagination li.active {
+    background-color: #00afc7;
+  }
+}

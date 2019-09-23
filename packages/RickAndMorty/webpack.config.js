@@ -9,10 +9,11 @@ module.exports = {
     contentBase: path.resolve(__dirname, './dist'),
     historyApiFallback: true
   },
-  entry: path.resolve(__dirname, 'src/js/index.js'),
+  entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -52,6 +53,10 @@ module.exports = {
       {
         test: /\.pug$/,
         use: ['pug-loader']
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
       }
     ]
   }

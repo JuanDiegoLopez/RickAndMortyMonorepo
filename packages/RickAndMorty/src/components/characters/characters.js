@@ -2,6 +2,7 @@ import { CharactersService } from '../../services/characters';
 import { HandleError } from '../../utils';
 import { MainWrapper, router} from '../../index';
 import template from './characters.pug';
+import style from './characters.scss';
 
 let paginationStart = 1;
 let paginationEnd = 10;
@@ -33,6 +34,7 @@ const createComponent = (data, currentPage) => {
   };
 
   MainWrapper.innerHTML = template(vars);
+  MainWrapper.style.cssText = style;
 };
 
 const setupListeners = () => {

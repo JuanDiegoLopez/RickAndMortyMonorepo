@@ -1,0 +1,11 @@
+app-home
+  .flex-container
+    each character in characters
+      .col-xs-12.col-sm-4
+        .card
+          .card-image
+            img(src=character.image)
+          .card-content
+            span.card-title #{character.name}
+
+  button.btn.waves-effect.waves-light.right Ver todos

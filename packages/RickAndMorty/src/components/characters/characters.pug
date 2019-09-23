@@ -1,0 +1,39 @@
+app-characters
+  .flex-container
+    each character in characters
+      .col-xs-12.col-sm-6.col-md-4.col-lg-3
+        .card.hoverable.character(id=character.id) 
+          .card-image
+            img(src=character.image)
+          .card-content
+            span.cart-title #{character.name}
+
+  - const page = parseInt(pagination.current);
+  ul.pagination.center
+    if (page - 1) === 0
+      li.disabled
+        a(href='#!')
+          i.material-icons chevron_left
+    else
+      li.waves-effect
+        a(href=`/characters/${page - 1}`)
+          i.material-icons chevron_left
+
+    - for(let i = pagination.start; i <= pagination.end; i++) {
+      if i == page
+        li.active
+          a.white-text(href=`/characters/${i}`) #{i}
+      else
+        li.waves-effect
+          a(href=`/characters/${i}`) #{i}
+    - }
+
+    if page === pagination.total 
+      li.disabled
+        a(href="#!")
+          i.material-icons chevron_right
+    else 
+      li.waves-effect
+        a(href=`/characters/${page + 1}`)
+          i.material-icons chevron_right
+

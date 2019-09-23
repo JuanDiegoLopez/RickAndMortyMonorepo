@@ -1,9 +1,11 @@
-import '../scss/style.scss';
+import './scss/style.scss';
+import './scss/grid.scss';
+
 import { Router } from './lib/router';
 import { HomeComponent } from './components/home/home';
 import { CharactersComponent } from './components/characters/characters';
 import { DetailsComponent } from './components/details/details';
-import MainTemplate from './components/layout/main.pug';
+import { setupLayout } from './components/layout';
 
 const configureRouter = () => { 
   const router = new Router();
@@ -21,19 +23,7 @@ const configureRouter = () => {
   return router;
 }
 
-document.getElementById('app').innerHTML = MainTemplate();
-
-const navbar = document.getElementById('nav-mobile');
-const items = navbar.getElementsByTagName('a');
-
-for (let item of items) {
-  item.addEventListener('click', (event) => {
-    event.preventDefault();
-    router.navigate(item.getAttribute('href'));
-  })
-}
+setupLayout();
 
 export const MainWrapper = document.querySelector('.content');
-MainWrapper.classList.add('container');
-
 export const router = configureRouter();

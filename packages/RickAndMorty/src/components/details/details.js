@@ -2,6 +2,7 @@ import { MainWrapper } from '../../index';
 import { CharactersService } from '../../services/characters';
 import { HandleError } from '../../utils'
 import template from './details.pug';
+import './details.scss';
 
 export async function DetailsComponent(id) {
   try {

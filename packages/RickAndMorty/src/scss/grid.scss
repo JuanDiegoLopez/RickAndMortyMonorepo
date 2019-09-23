@@ -1,0 +1,42 @@
+$gridcols: 12;
+
+$breakpoints: (
+  'xs': 0,
+  'sm': 540px,
+  'md': 720px,
+  'lg': 960px,
+  'xl': 1140px
+);
+
+@mixin create-medias($breakpoint) {
+  @if ($breakpoint == 0) {
+    @content;
+  } @else {
+    @media screen and (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin create-col-classes($modifier, $gridcols, $breakpoint) {
+  @include create-medias($breakpoint) {
+    @for $size from 1 through $gridcols {
+      .col-#{$modifier}-#{$size} {
+        flex: ($size * 100 / 12) * 1%;
+        padding: 0 4px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@each $modifier, $breakpoint in $breakpoints {
+  @include create-col-classes($modifier, $gridcols, $breakpoint);
+}
+
