@@ -1,0 +1,19 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb-base",
+    "plugin:jest/recommended"
+  ],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "no-console": "off"
+  },
+  "plugins": [
+    "jest"
+  ],
+  "settings": {
+    "import/resolver": "webpack"
+  }
+}
