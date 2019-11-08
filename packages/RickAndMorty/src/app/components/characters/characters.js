@@ -1,4 +1,4 @@
-import { HandleError, elements } from 'src/utils';
+import { HandleError, getElements } from 'src/utils';
 import CharactersService from 'services/characters';
 import router from 'src/router';
 
@@ -11,11 +11,12 @@ class CharactersComponent {
     this.paginationStart = 1;
     this.paginationEnd = 10;
     this.router = router;
+    this.charactersService = CharactersService;
   }
 
   async createComponent() {
     try {
-      const response = await CharactersService.getAllCharacters(this.page);
+      const response = await this.charactersService.getAllCharacters(this.page);
       const data = await response.json();
 
       this.render(data, this.page);
@@ -51,13 +52,13 @@ class CharactersComponent {
       },
     };
 
-    elements.content.innerHTML = template(vars);
-    elements.content.style.cssText = style;
+    getElements().content.innerHTML = template(vars);
+    getElements().content.style.cssText = style;
   }
 
   setupListeners() {
-    const linksElements = Array.from(elements.content.getElementsByTagName('a'));
-    const charactersElements = Array.from(elements.content.getElementsByClassName('character'));
+    const linksElements = Array.from(getElements().content.getElementsByTagName('a'));
+    const charactersElements = Array.from(getElements().content.getElementsByClassName('character'));
 
     linksElements.forEach((link) => {
       link.addEventListener('click', (event) => {

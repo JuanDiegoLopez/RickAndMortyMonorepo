@@ -2,7 +2,7 @@ import 'scss/style.scss';
 import 'scss/grid.scss';
 import Logo from 'assets/logo.png';
 
-import { elements } from 'src/utils';
+import { getElements } from 'src/utils';
 import router from 'src/router';
 
 import CharactersComponent from './components/characters/characters';
@@ -15,7 +15,7 @@ class AppComponent {
   }
 
   createComponent() {
-    const navbarItems = Array.from(elements.navbar.getElementsByTagName('a'));
+    const navbarItems = Array.from(getElements().navbar.getElementsByTagName('a'));
 
     navbarItems.forEach((element) => {
       element.addEventListener('click', (event) => {
@@ -27,7 +27,7 @@ class AppComponent {
     const logoImage = new Image();
     logoImage.src = Logo;
 
-    const [logoElement] = document.getElementsByClassName('brand-logo');
+    const logoElement = getElements().navbar.querySelector('.brand-logo');
     logoElement.appendChild(logoImage);
 
     this.setupRouter();

@@ -1,4 +1,4 @@
-import { elements, HandleError } from 'src/utils';
+import { getElements, HandleError } from 'src/utils';
 import CharactersService from 'services/characters';
 import router from 'src/router';
 
@@ -9,11 +9,12 @@ class HomeComponent {
   constructor() {
     this.characters = [];
     this.router = router;
+    this.charactersService = CharactersService;
   }
 
   async createComponent() {
     try {
-      const response = await CharactersService.getMainCharacters();
+      const response = await this.charactersService.getMainCharacters();
       const data = await response.json();
 
       this.characters = data;
@@ -24,8 +25,8 @@ class HomeComponent {
   }
 
   render() {
-    elements.content.innerHTML = template({ characters: this.characters });
-    const button = elements.content.querySelector('.btn');
+    getElements().content.innerHTML = template({ characters: this.characters });
+    const button = getElements().content.querySelector('.btn');
 
     button.addEventListener('click', () => {
       this.router.navigate('/characters/1');
