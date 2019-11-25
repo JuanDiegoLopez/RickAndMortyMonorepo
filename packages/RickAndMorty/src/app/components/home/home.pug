@@ -2,10 +2,6 @@ app-home
   .flex-container
     each character in characters
       .col-xs-12.col-sm-4
-        .card
-          .card-image
-            img(src=character.image)
-          .card-content
-            span.card-title #{character.name}
+        character-thumbnail(data-name=character.name data-image=character.image)
 
   button.btn.waves-effect.waves-light.right Ver todos

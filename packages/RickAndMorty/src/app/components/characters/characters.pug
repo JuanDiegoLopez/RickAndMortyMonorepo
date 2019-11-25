@@ -2,11 +2,7 @@ app-characters
   .flex-container
     each character in characters
       .col-xs-12.col-sm-6.col-md-4.col-lg-3
-        .card.hoverable.character(id=character.id) 
-          .card-image
-            img(src=character.image)
-          .card-content
-            span.cart-title #{character.name}
+        character-thumbnail.character(data-name=character.name data-image=character.image id=character.id)
 
   - const page = parseInt(pagination.current);
   ul.pagination.center

@@ -13,6 +13,7 @@
   "author": "Juan Diego Lopez",
   "license": "MIT",
   "dependencies": {
+    "character-thumbnail": "^1.0.4",
     "materialize-css": "^1.0.0-rc.2",
     "path": "^0.12.7"
   },
