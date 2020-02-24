@@ -1,0 +1,7 @@
+.brand-logo img {
+  max-width: 180px;
+}
+
+#nav-mobile li:hover {
+  background-color: #424242;
+}
