@@ -9,16 +9,17 @@ module.exports = {
     contentBase: path.resolve(__dirname, './dist'),
     historyApiFallback: true,
   },
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, './src/index.js'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: './',
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/',
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './src/index.html',
+      favicon: './public/favicon.ico',
+      template: './public/index.html',
     }),
     new MiniCssExtractPlugin({
       filename: 'css/styles.css',
@@ -62,7 +63,7 @@ module.exports = {
         use: ['pug-loader'],
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif|ico)$/,
         use: ['file-loader'],
       },
     ],
