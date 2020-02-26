@@ -1,10 +1,11 @@
 import React from 'react';
 
-import CharactersService from '../../../services/characters';
+import { CharactersService } from '../../../services/characters';
 
 export class Home extends React.Component {
   constructor() {
     super();
+
     this.state = {
       characters: []
     };

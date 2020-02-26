@@ -1,6 +1,6 @@
 import config from '../config';
 
-class CharactersService {
+export class CharactersService {
   static getMainCharacters() {
     return fetch(`${config.API_URL}/character/1,2,3`);
   }
@@ -13,5 +13,3 @@ class CharactersService {
     return fetch(`${config.API_URL}/character/${id}`);
   };
 }
-
-export default CharactersService;

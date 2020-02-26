@@ -1,6 +1,7 @@
 import React from 'react';
 
-import CharacterService from '../../../services/characters';
+import { CharactersService } from '../../../services/characters';
+
 import './Details.css';
 
 export class Details extends React.Component {
@@ -13,7 +14,7 @@ export class Details extends React.Component {
   }
 
   componentDidMount() {
-    CharacterService.getCharacterById(this.props.match.params.id)
+    CharactersService.getCharacterById(this.props.match.params.id)
       .then(response => response.json())
       .then(data => this.setState({ character: data }));
   }
@@ -46,7 +47,11 @@ export class Details extends React.Component {
             </div>
             <div className="collection-item">
               <b>Description: </b>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus nostrum tenetur voluptatum. Beatae magni perspiciatis culpa accusamus placeat voluptatem veniam voluptatibus dolorem! Enim, nulla! Officiis cumque saepe velit officia voluptates!</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus nostrum tenetur voluptatum. 
+                Beatae magni perspiciatis culpa accusamus placeat voluptatem veniam voluptatibus dolorem! Enim, nulla! 
+                Officiis cumque saepe velit officia voluptates!
+              </p>
             </div>
           </div>
         </div>

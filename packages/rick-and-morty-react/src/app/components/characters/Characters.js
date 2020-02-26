@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import CharacterService from '../../../services/characters';
+import { CharactersService } from '../../../services/characters';
 import { Pagination } from '../pagination/Pagination';
 
 import './Characters.css';
 
 export class Characters extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
 
     this.state = {
@@ -27,7 +27,7 @@ export class Characters extends React.Component {
 
   getCharacters() {
     this.setState({ showSpinner: true });
-    CharacterService.getCharacters(this.props.match.params.page)
+    CharactersService.getCharacters(this.props.match.params.page)
       .then(response => response.json())
       .then(data => this.setState({ characters: data.results }));
   }

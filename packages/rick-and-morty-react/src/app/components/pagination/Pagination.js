@@ -6,6 +6,7 @@ import './Pagination.css';
 export class Pagination extends React.Component {
   constructor(props) {
     super();
+
     const totalPages = parseInt(props.totalPages);
     const currentPage = parseInt(props.currentPage);
     const numberItems = parseInt(props.numberItems);
