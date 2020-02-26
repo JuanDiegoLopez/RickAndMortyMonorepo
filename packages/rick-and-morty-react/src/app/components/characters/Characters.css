@@ -1,0 +1,14 @@
+.characters .column-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.characters .column {
+  margin: 10px;
+  max-width: 300px;
+}
+
+.characters a {
+  color: black;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Footer.css';
 
-class Header extends React.Component {
+export class Footer extends React.Component {
   render() {
     return (
       <footer className="page-footer grey darken-4">
@@ -13,5 +13,3 @@ class Header extends React.Component {
     );
   }
 }
-
-export default Header;

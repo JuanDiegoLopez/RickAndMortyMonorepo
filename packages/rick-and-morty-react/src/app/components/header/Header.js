@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavLink  } from 'react-router-dom'
+import { NavLink  } from 'react-router-dom';
 
 import logo from '../../../assets/logo.png';
 import './Header.css';
 
-class Header extends React.Component {
+export class Header extends React.Component {
   render() {
     return (
         <nav>
@@ -25,5 +25,3 @@ class Header extends React.Component {
     );
   }
 }
-
-export default Header;

@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'character-thumbnail/dist';
 
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
-import Home from './components/home/Home';
+import { Characters } from './components/characters/Characters';
+import { Details } from './components/details/Details';
+import { Footer } from './components/footer/Footer';
+import { Header } from './components/header/Header';
+import { Home } from './components/home/Home';
 
 import './App.css';
 
@@ -18,9 +20,9 @@ class App extends React.Component {
 
           <div className="container content">
             <Switch>
-              <Route path="/">
-                <Home/>
-              </Route>
+              <Route path="/characters/:page" component={Characters}/>
+              <Route path="/details/:id" component={Details}/>
+              <Route path="/" component={Home}/>
             </Switch>
           </div>
 

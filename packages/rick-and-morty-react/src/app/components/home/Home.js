@@ -2,7 +2,7 @@ import React from 'react';
 
 import CharactersService from '../../../services/characters';
 
-class Home extends React.Component {
+export class Home extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -19,8 +19,8 @@ class Home extends React.Component {
   getThumbnails() {
     return this.state.characters.map(character => {
       return (
-        <div className="col s4" key={character.id}>
-          <character-thumbnail name={character.name} image={character.image}/>
+        <div className="col s12 m4" key={character.id}>
+          <character-thumbnail data-name={character.name} data-image={character.image}/>
         </div>
       );
     });
@@ -32,5 +32,3 @@ class Home extends React.Component {
     );
   }
 }
-
-export default Home;

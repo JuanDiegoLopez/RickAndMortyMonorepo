@@ -1,0 +1,15 @@
+.pagination {
+  text-align: center;
+}
+
+.pagination li.active {
+  background-color: #00afc7;
+}
+
+.pagination li.disabled {
+  cursor: default;
+}
+
+.pagination li.disabled a {
+  pointer-events: none;
+}
